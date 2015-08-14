@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="UTF-8">
+		<title>Responsive Example</title>
+		<script id="sap-ui-bootstrap"
+			src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+			data-sap-ui-libs="sap.m"
+			data-sap-ui-theme="sap_bluecrystal"
+			data-sap-ui-xx-bindingSyntax="complex">
+		</script>
+		<script>
+      window.onerror = function(msg, url, line) {
+        var idx = url.lastIndexOf("/");
+        if (idx > -1) {
+          url = url.substring(idx + 1);
+        }
+        alert("ERROR in " + url + " (line #" + line + ")\n" + msg);
+        return false;
+      };
+
+      $.sap.registerModulePath("example", "./");
+      $.sap.require("example.js.CITApp");
+			var citApp = new CITApp("application", "XML", "content", "main", "error.html",true);
+		</script>
+	</head>
+	<body class="sapUiBody" id="content">
+	</body>
+</html>

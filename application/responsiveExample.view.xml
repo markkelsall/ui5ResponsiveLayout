@@ -1,0 +1,48 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:form="sap.ui.layout.form"
+		controllerName="application.responsiveExample" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Responsive Example">
+		<content>
+			<Panel>
+				<headerToolbar>
+      		<Toolbar height="3rem">
+        		<Text text="Examples"/>
+      		</Toolbar>
+    		</headerToolbar>
+				<content>
+					<form:ResponsiveGridLayout>
+
+					</form:ResponsiveGridLayout>
+				</content>
+			</Panel>
+			<Panel>
+				<headerToolbar>
+      		<Toolbar height="3rem">
+        		<Text text="Best Practice"/>
+      		</Toolbar>
+    		</headerToolbar>
+				<content>
+					<Text text="Use example 1 for mobile"/>
+					<Text text="Use example 2 for desktop"/>
+				</content>
+			</Panel>
+			<Panel expandable="true" expanded="false">
+				<headerToolbar>
+      		<Toolbar height="3rem">
+        		<Text text="Attributes"/>
+      		</Toolbar>
+    		</headerToolbar>
+				<content>
+					<List items="{attributes>/data}" noDataText="No attributes found">
+						<items>
+							<ObjectListItem title="{attributes>attributeName} - Default value is {attributes>attributeDefault}">
+								<attributes>
+									<ObjectAttribute text="{attributes>attributeText}"/>
+								</attributes>
+							</ObjectListItem>
+						</items>
+					</List>
+				</content>
+			</Panel>
+    </content>
+  </Page>
+</core:View>
