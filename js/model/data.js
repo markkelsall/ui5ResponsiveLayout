@@ -1,5 +1,35 @@
 var attributes = [
   {
+    attributeName : "maxContainerCols",
+    attributeDefault : "2",
+    attributeText : "The maximum amount of inner FormContainers per row that is used before a new row is started."
+  },
+  {
+    attributeName : "minWidth",
+    attributeDefault : "not defined",
+    attributeText : "The overall minimal width in pixels that is used for the SimpleForm. If the available width is below the given minWidth the SimpleForm will create a new row for the next FormContainer. -1 value is default meaning that inner FormContainers will be stacked until maxCols is reached, irrespective if a maxWidth is reached or the available parents width is reached."
+  },
+  {
+    attributeName : "width",
+    attributeDefault : "not defined",
+    attributeText : ""
+  },
+  {
+    attributeName : "editable",
+    attributeDefault : "not defined",
+    attributeText : "Applies a device and theme specific line-height to the form elements if the form has editable content. In this case all (not only the editable) rows of the form will get the line height."
+  },
+  {
+    attributeName : "labelMinWidth",
+    attributeDefault : "not defined",
+    attributeText : "Specifies the min-width in pixels of the label in all form containers."
+  },
+  {
+    attributeName : "layout",
+    attributeDefault : "192",
+    attributeText : "The FormLayout that is used to render the SimpleForm."
+  },
+  {
     attributeName : "labelSpanL",
     attributeDefault : "4",
     attributeText : "Default span for labels in large size. This span is only used if more than 1 container is in one line, if only 1 container is in the line the labelSpanM value is used."

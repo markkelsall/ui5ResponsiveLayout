@@ -1,30 +1,66 @@
-<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:form="sap.ui.layout.form"
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form"
 		controllerName="application.responsiveExample" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page title="Responsive Example">
 		<content>
-			<Panel>
-				<headerToolbar>
-      		<Toolbar height="3rem">
-        		<Text text="Examples"/>
-      		</Toolbar>
-    		</headerToolbar>
-				<content>
-					<form:ResponsiveGridLayout>
 
-					</form:ResponsiveGridLayout>
-				</content>
-			</Panel>
-			<Panel>
+			<!-- Best practice notes -->
+			<Panel expandable="true" expanded="true">
 				<headerToolbar>
       		<Toolbar height="3rem">
         		<Text text="Best Practice"/>
       		</Toolbar>
     		</headerToolbar>
 				<content>
-					<Text text="Use example 1 for mobile"/>
-					<Text text="Use example 2 for desktop"/>
+					<VBox>
+						<items>
+							<Text text="This project provides examples and best practice on how to create a responsive
+								layout using the sap.ui.layout.form.SimpleForm control and attributes. It essentially replaces
+								the need for you to know CSS and media queries except in more complicated scenarios."/>
+
+							<Text text="Dos and dont's:"/>
+							<Text text="Do set editable to true or false. If you leave it out and it's editable then the labels
+								don't line up properly. Sh*t framework."/>
+							<Text text="Do set the layout to ResponsiveGridLayout."/>
+							<Text text="Do use layout data (example below) for changing how individual controls sit next to each other."/>
+							<Text text=""/>
+							<Text text="Don't try to put label input label input on the same line in the same form. It will only
+								result in you getting a headache."/>
+							<Text text="Don't deviate from KISS!"/>
+						</items>
+					</VBox>
 				</content>
 			</Panel>
+
+			<!-- Examples-->
+			<Panel expandable="true" expanded="true">
+				<headerToolbar>
+      		<Toolbar height="3rem">
+        		<Text text="Examples"/>
+      		</Toolbar>
+    		</headerToolbar>
+				<content>
+					<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanL="1" labelSpanM="3">
+						<form:content>
+							<core:Title text="Fill in the blanks"/>
+							<Label text="Name"/>
+							<Input value="{contact>/firstName}" placeholder="First Name"/>
+							<Label text="Name"/>
+							<Input value="{contact>/lastName}" placeholder="Last Name"/>
+							<Label text="Address line 1"/>
+							<Input value="{contact>/houseNo}" placeholder="House No.">
+								<layoutData>
+        					<layout:GridData span="L2 M2 S12"></layout:GridData>
+    						</layoutData>
+							</Input>
+							<Input value="{contact>/street}" placeholder="Street"/>
+							<Label text="Postcode"/>
+							<Input value="{contact>/postcode}" placeholder="Postcode"/>
+						</form:content>
+					</form:SimpleForm>
+				</content>
+			</Panel>
+
+			<!-- Attributes -->
 			<Panel expandable="true" expanded="false">
 				<headerToolbar>
       		<Toolbar height="3rem">
