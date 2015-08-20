@@ -1,6 +1,6 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form"
-		controllerName="application.responsiveExample" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page title="Responsive Example">
+		controllerName="application.detail.responsiveFormExample" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Responsive Form">
 		<content>
 
 			<!-- Best practice notes -->
@@ -13,21 +13,40 @@
 				<content>
 					<VBox>
 						<items>
-							<Text text="This project provides examples and best practice on how to create a responsive
-								layout using the sap.ui.layout.form.SimpleForm control and attributes. It essentially replaces
-								the need for you to know CSS and media queries except in more complicated scenarios."/>
-
+							<Text text="This project provides an example on how to create a responsive
+								form using the sap.ui.layout.form.SimpleForm control and attributes. It essentially replaces
+								the need for you to know CSS and media queries."/>
+							<Text text="If you want to have more than 2 columns, use the Grid layout."/>
 							<Text text="Dos and dont's:"/>
-							<Text text="Do set editable to true or false. If you leave it out and it's editable then the labels
+							<Text text="Do explicitly set editable to true or false. If you leave it out and it's editable then the labels
 								don't line up properly. Sh*t framework."/>
 							<Text text="Do set the layout to ResponsiveGridLayout."/>
 							<Text text="Do use layout data (example below) for changing how individual controls sit next to each other."/>
-							<Text text=""/>
 							<Text text="Don't try to put label input label input on the same line in the same form. It will only
 								result in you getting a headache."/>
 							<Text text="Don't deviate from KISS!"/>
 						</items>
 					</VBox>
+				</content>
+			</Panel>
+
+			<!-- Attributes -->
+			<Panel expandable="true" expanded="false">
+				<headerToolbar>
+      		<Toolbar height="3rem">
+        		<Text text="Attributes"/>
+      		</Toolbar>
+    		</headerToolbar>
+				<content>
+					<List items="{attributes>/data}" noDataText="No attributes found">
+						<items>
+							<ObjectListItem title="{attributes>attributeName} - Default value is {attributes>attributeDefault}">
+								<attributes>
+									<ObjectAttribute text="{attributes>attributeText}"/>
+								</attributes>
+							</ObjectListItem>
+						</items>
+					</List>
 				</content>
 			</Panel>
 
@@ -57,26 +76,6 @@
 							<Input value="{contact>/postcode}" placeholder="Postcode"/>
 						</form:content>
 					</form:SimpleForm>
-				</content>
-			</Panel>
-
-			<!-- Attributes -->
-			<Panel expandable="true" expanded="false">
-				<headerToolbar>
-      		<Toolbar height="3rem">
-        		<Text text="Attributes"/>
-      		</Toolbar>
-    		</headerToolbar>
-				<content>
-					<List items="{attributes>/data}" noDataText="No attributes found">
-						<items>
-							<ObjectListItem title="{attributes>attributeName} - Default value is {attributes>attributeDefault}">
-								<attributes>
-									<ObjectAttribute text="{attributes>attributeText}"/>
-								</attributes>
-							</ObjectListItem>
-						</items>
-					</List>
 				</content>
 			</Panel>
     </content>

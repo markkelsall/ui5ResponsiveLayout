@@ -6,11 +6,11 @@ sap.ui.jsview("application.main", {
 
 	createContent : function(oController) {
 
-		var app = new sap.m.App("citApp");
-		oController.app = app;
+		var app = new sap.m.SplitApp("responsiveApp");
+		oController.splitApp = app;
 
-		var oDetailView = citApp.getNavigation().loadNewView("application.responsiveExample");
-		app.addPage(oDetailView);
+		var oDetailView = responsiveApp.getNavigation().loadNewView("application.master.responsiveExamplesList");
+		app.addMasterPage(oDetailView);
 
 		return app;
 	}

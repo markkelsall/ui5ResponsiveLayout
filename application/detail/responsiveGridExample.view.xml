@@ -1,0 +1,113 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:layout="sap.ui.layout"
+		controllerName="application.detail.responsiveGridExample" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Responsive Grid">
+		<content>
+
+			<!-- Best practice notes -->
+			<Panel expandable="true" expanded="true">
+				<headerToolbar>
+      		<Toolbar height="3rem">
+        		<Text text="Best Practice"/>
+      		</Toolbar>
+    		</headerToolbar>
+				<content>
+					<VBox>
+						<items>
+							<Text text="This project provides an example on how to create a responsive grid using the
+								sap.ui.layout.Grid control and attributes. It essentially replaces the need for you to
+								know CSS and media queries."/>
+							<Text text="The screen is broken down into 12 columns, regardless of size."/>
+							<Text text="There are 3 sizes to cater for Large (L), Medium (M) and Small (S.)"/>
+							<Text text="For each responsive control, you must decide how much you want it to take up of
+								 the screen in each of the different sizes."/>
+							<Text text="You must specify them on order of Ln Mn Sn where n represents the number of
+								columns to take up for that size."/>
+							<Text text="For labels that match up to mobile input controls, you need to add a class
+								that means the label sits in the middle vertically of the input control.
+								See the example below."/>
+							<Text text="Specifying the width to 100% on any of the elements means that even if the control
+								 naturally doesn't fill all the columns specified for that size, it will stretch the control."/>
+							<Text text="Don't deviate from KISS!"/>
+						</items>
+					</VBox>
+					<VBox>
+						<items>
+							<Text text="Advanced" class="advanced"/>
+							<Text text="You can alternatively set the control layout data of each control manually to break
+								 onto its own line using the linebreakL, linebreakM or linebreakS attributes for layoutData."/>
+							<Text text="For each of the different screen sizes, you can also set the control to be visible or
+								not using the visibleL, visibleM or visibleS attributes for layoutData."/>
+						</items>
+					</VBox>
+				</content>
+			</Panel>
+
+			<!-- Examples-->
+			<Panel expandable="true" expanded="true">
+				<headerToolbar>
+      		<Toolbar height="3rem">
+        		<Text text="Examples"/>
+      		</Toolbar>
+    		</headerToolbar>
+				<content>
+					<layout:Grid hSpacing="1">
+						<layout:content>
+							<Label text="Input 1" class="inputLabel">
+								<layoutData>
+		          		<layout:GridData span="L2 M4 S12"/>
+		        		</layoutData>
+							</Label>
+							<Select selectedKey="{example>/inputOneSelectedKey}" items="{example>/inputOneData}" width="100%">
+								<layoutData>
+		          		<layout:GridData span="L4 M8 S12"/>
+		        		</layoutData>
+		          	<core:Item key="{example>id}" text="{example>text}"/>
+		        	</Select>
+
+							<Label text="Input 2" class="inputLabel">
+								<layoutData>
+		          		<layout:GridData span="L2 M4 S12"/>
+		        		</layoutData>
+							</Label>
+							<Select selectedKey="{example>/inputTwoSelectedKey}" items="{example>/inputTwoData}" width="100%">
+								<layoutData>
+		          		<layout:GridData span="L4 M8 S12"/>
+		        		</layoutData>
+		          	<core:Item key="{example>id}" text="{example>text}"/>
+		        	</Select>
+
+							<Label text="Input 3" class="inputLabel">
+								<layoutData>
+		          		<layout:GridData span="L2 M4 S12"/>
+		        		</layoutData>
+							</Label>
+							<Select selectedKey="{example>/inputThreeSelectedKey}" items="{example>/inputThreeData}" width="100%">
+								<layoutData>
+		          		<layout:GridData span="L4 M8 S12"/>
+		        		</layoutData>
+		          	<core:Item key="{example>id}" text="{example>text}"/>
+		        	</Select>
+
+							<Label text="Input 4" class="inputLabel">
+								<layoutData>
+		          		<layout:GridData span="L2 M4 S12"/>
+		        		</layoutData>
+							</Label>
+							<Input placeholder="input four" value="{example>/inputFour}">
+								<layoutData>
+		          		<layout:GridData span="L2 M4 S6"/>
+		        		</layoutData>
+							</Input>
+							<Select selectedKey="{example>/inputFourSelect}" items="{example>/inputFourData}" width="100%">
+								<layoutData>
+		          		<layout:GridData span="L2 M4 S6"/>
+		        		</layoutData>
+		          	<core:Item key="{example>id}" text="{example>text}"/>
+		        	</Select>
+						</layout:content>
+					</layout:Grid>
+				</content>
+			</Panel>
+		</content>
+	</Page>
+</core:View>

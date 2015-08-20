@@ -1,0 +1,13 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+		controllerName="application.master.responsiveExamplesList" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Responsive Options">
+		<content>
+			<List noDataText="No examples">
+				<items>
+					<ObjectListItem title="Simple Form" type="Active" press="onSimpleFormPress"></ObjectListItem>
+					<ObjectListItem title="Grid" type="Active" press="onGridPress"></ObjectListItem>
+				</items>
+			</List>
+    </content>
+  </Page>
+</core:View>

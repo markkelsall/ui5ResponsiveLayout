@@ -46,33 +46,32 @@ Navigation.prototype.navigate = function (sToDivId, sFromDivId, oController, oDa
  *
  * @class Navigation
  *
- * @param {String} sPage - Full qualified page name e.g. application.master.mainPage
+ * @param {String} sView - Fully qualified view name e.g. application.master.main
  * @param {Object} oData -  data object or null (not mandatory)
  * @return none
  * @version {@link Navigation}
  */
-Navigation.prototype.toMasterPage = function (sPage, oData, sTransitionName) {
-	//check to see if sPage already exists in DOM
-	var sId = this.replaceAllInString(sPage, ".", "_");
-	var page = sap.ui.getCore().byId(sId);
+Navigation.prototype.toMasterPage = function (sView, oData, sTransitionName) {
+	//check to see if sView already exists in the DOM by replacing . with _
+	var sId = this.replaceAllInString(sView, ".", "_");
+	var view = sap.ui.getCore().byId(sId);
 
-	if (page === undefined) {
+	if (view === undefined) {
 		//load view
-		var view = this.loadNewView(sPage);
+		view = this.loadNewView(sView);
 		//add view
 		this.splitApp.addMasterPage(view);
 	}
 
-	//work out transition
 	sTransitionName = this.transitionLookup(sTransitionName);
 
+	var evt = {};
+    evt.data = oData;
 	//In the case where the page is already visible, but we want to re-run the navigation
-	if (this.splitApp.getCurrentMasterPage().getId() == sId) {
-		var evt = {};
-		evt.data = oData;
+	if (this.splitApp.getCurrentMasterPage().getId() === sId && this.splitApp.getCurrentMasterPage().getController().onBeforeShow !== undefined) {
 		this.splitApp.getCurrentMasterPage().getController().onBeforeShow(evt);
 	} else {
-		this.splitApp.toMaster(sId, sTransitionName, oData, null);
+		this.splitApp.toMaster(sId, sTransitionName, evt, null);
 	}
 };
 
@@ -86,27 +85,26 @@ Navigation.prototype.toMasterPage = function (sPage, oData, sTransitionName) {
  * @return none
  * @version {@link Navigation}
  */
-Navigation.prototype.toDetailPage = function (sPage, oData) {
-	//check to see if sPage already exists in DOM
-	var sId = this.replaceAllInString(sPage, ".", "_");
-	var page = sap.ui.getCore().byId(sId);
+Navigation.prototype.toDetailPage = function (sView, oData, sTransitionName) {
+	//check to see if sView already exists in the DOM by replacing . with _
+	var sId = this.replaceAllInString(sView, ".", "_");
+	var view = sap.ui.getCore().byId(sId);
 
-	if (page === undefined) {
+	if (view === undefined) {
 		//load view
-		var view = this.loadNewView(sPage);
+		view = this.loadNewView(sView);
 		//add view
 		this.getSplitApp().addDetailPage(view);
 	}
 
-	//work out transition
 	sTransitionName = this.transitionLookup(sTransitionName);
 
-	if (this.getSplitApp().getCurrentDetailPage().getId() == sId) {
-		var evt = {};
-		evt.data = oData;
+	var evt = {};
+	evt.data = oData;
+	if (this.getSplitApp().getCurrentDetailPage().getId() === sId && this.splitApp.getCurrentDetailPage().getController().onBeforeShow !== undefined) {
 		this.splitApp.getCurrentDetailPage().getController().onBeforeShow(evt);
 	} else {
-		this.splitApp.toDetail(sId, "", oData, null);
+		this.splitApp.toDetail(sId, sTransitionName, evt, null);
 	}
 };
 
